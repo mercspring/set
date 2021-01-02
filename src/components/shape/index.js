@@ -13,7 +13,6 @@ export default function Shape(props) {
             <svg xmlns="http://www.w3.org/2000/svg"
                 width="1in" height="0.402778in"
                 viewBox="0 0 72 29"
-                className="red"
             >
                 <linearGradient id="red-stripes" x1="40%" y1="0%" x2="50%" y2="0%" spreadMethod="repeat" gradientUnits="userSpaceOnUse">
 

@@ -1,13 +1,17 @@
 import React from 'react';
 import Shape from '../shape';
 
-export default function Card() {
+export default function Card(props) {
+    function populateCard(){
+        const shapes = [];
+        for(let i = 0; i < props.number; i++){
+            shapes.push(<Shape color={props.color} shape={props.shape} fill={props.fill}></Shape>)
+        }
+        return shapes;
+    }
     return (
-        <div style={{ border: "solid 1px black", borderRadius: "10px" }}>
-
-            <Shape color="green" shape="diamond" fill="empty"></Shape>
-            <Shape color="purple" shape="squiggle" fill="striped"></Shape>
-            <Shape color="red" shape="oval" fill="solid"></Shape>
+        <div style={{ border: "solid 1px black", borderRadius: "10px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            {populateCard()}
         </div>
     )
 }
