@@ -1,21 +1,21 @@
-export function Deck() {
-    this.colors = ['green', 'red', 'purple'];
-    this.fill = ['empty', 'striped', 'solid'];
-    this.number = [1, 2, 3];
-    this.shapes = ['diamond', 'oval', 'squiggle']
+function Deck() {
+    // this.colors = ['green', 'red', 'purple'];
+    // this.fill = ['empty', 'striped', 'solid'];
+    // this.number = [1, 2, 3];
+    // this.shapes = ['diamond', 'oval', 'squiggle']
     this.shuffle = function (arr) {
         let currentIndex = arr.length, temporaryValue, randomIndex;
 
         while (0 !== currentIndex) {
-      
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-      
-          temporaryValue = arr[currentIndex];
-          arr[currentIndex] = arr[randomIndex];
-          arr[randomIndex] = temporaryValue;
+
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            temporaryValue = arr[currentIndex];
+            arr[currentIndex] = arr[randomIndex];
+            arr[randomIndex] = temporaryValue;
         }
-      
+
         return arr;
     }
     this.cards = [
@@ -100,14 +100,28 @@ export function Deck() {
         { color: 'purple', fill: 'solid', number: 3, shape: 'diamond' },
         { color: 'purple', fill: 'solid', number: 3, shape: 'oval' },
         { color: 'purple', fill: 'solid', number: 3, shape: 'squiggle' }
-      ]
+    ]
     this.Deck = this.shuffle(this.cards);
-    this.deal = function(number){
+    this.deal = function (number) {
         const dealtCards = [];
-       for(let i = 0; i < number; i++){
-           dealtCards.push(this.Deck.pop())
-       } 
-       console.log(dealtCards)
-       return dealtCards
+        for (let i = 0; i < number; i++) {
+            dealtCards.push(this.Deck.pop())
+        }
+        console.log(dealtCards)
+        return dealtCards
     }
 }
+
+const deal = function (number, deck) {
+    const dealtCards = [];
+    for (let i = 0; i < number; i++) {
+        dealtCards.push(deck.pop())
+    }
+    console.log(dealtCards)
+    return dealtCards
+}
+const newDeck = new Deck()
+console.log(newDeck.Deck)
+
+export default newDeck.Deck
+
