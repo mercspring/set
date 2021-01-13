@@ -1,0 +1,25 @@
+.card{
+    border: solid 1px black;
+    margin: 2px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.upright{
+    min-width: 133px;
+    flex-direction: row;
+}
+
+.not-upright{
+    min-height: 133px;
+    flex-direction: column;
+}
+
+.selected{
+    background-color: khaki;
+}
+
+.not-selected{
+    background-color: white;
+}

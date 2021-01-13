@@ -1,18 +1,26 @@
-import { React, useState, useEffect } from 'react';
+import { React } from 'react';
 import Shape from '../shape';
+import "./style.css";
 
-const styles = {
-    notSelected: { border: "solid 1px black", margin: "2px", borderRadius: "10px", display: "flex", flexDirection: "column", justifyContent: "center", minHeight: "133px", backgroundColor: "white" },
-    selected: { border: "solid 1px black", margin: "2px", borderRadius: "10px", display: "flex", flexDirection: "column", justifyContent: "center", minHeight: "133px", backgroundColor: "khaki" }
-}
+// const styles = {
+//     notSelected: { border: "solid 1px black", margin: "2px", borderRadius: "10px", display: "flex", flexDirection: "column", justifyContent: "center", minHeight: "133px", backgroundColor: "white"},
+//     selected: { border: "solid 1px black", margin: "2px", borderRadius: "10px", display: "flex", flexDirection: "column", justifyContent: "center", minHeight: "133px", backgroundColor: "khaki" },
+//     selectedUpright: { border: "solid 1px black", margin: "2px", borderRadius: "10px", display: "flex", flexDirection: "row", justifyContent: "center", minWidth: "133px", backgroundColor: "white" },
+//     notSelectedUpright: { border: "solid 1px black", margin: "2px", borderRadius: "10px", display: "flex", flexDirection: "row", justifyContent: "center", minWidth: "133px", backgroundColor: "khaki" },
+// }
 
 export default function Card(props) {
     // const [selected, setSelected] = useState(false);
 
+    function processClasses(){
+        const localSelected = props.selectedCards.includes(props.cardNumber) ? " selected " : " not-selected ";
+        const localUpright = props.upright ? " upright " : " not-upright "; 
+        return localSelected + localUpright + " card "
+    }
     function populateCard() {
         const shapes = [];
         for (let i = 0; i < props.number; i++) {
-            shapes.push(<Shape color={props.color} shape={props.shape} fill={props.fill}></Shape>)
+            shapes.push(<Shape upright={props.upright} color={props.color} shape={props.shape} fill={props.fill}></Shape>)
         }
         return shapes;
     }
@@ -25,7 +33,7 @@ export default function Card(props) {
         }
     }
     return (
-        <div style={props.selectedCards.includes(props.cardNumber) ? styles.selected : styles.notSelected} onClick={onClick}>
+        <div className= {processClasses()} onClick={onClick}>
             {populateCard()}
         </div>
     )

@@ -14,3 +14,8 @@ export function check([card1, card2, card3]) {
     }
     return false
 }
+
+function checkBoard(board){
+
+
+}
